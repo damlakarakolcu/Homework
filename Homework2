@@ -1,0 +1,64 @@
+ad=[]
+soyad=[]
+yaş=[]
+yıl=[]
+
+for k in range(999):
+  print('\n'"                   REGISTER SCREEN"'\n')
+  
+  while True:
+    firstname = input('Name: ') 
+    if len(firstname)== 0 :
+     print("This part can not be empty!"'\n')
+    else:
+     break
+
+  while True:
+    lastname = input('\n''Lastname: ') 
+    if len(lastname)== 0 :
+     print("This part can not be empty!")
+    else:
+     break
+
+  while True:
+    age = (input('\n''Age: '))
+    if len(age) == 0 :
+      print("This part can not be empty!"'\n')
+    elif int(age) > 122 or int(age) < 0:
+      print("This is not possible.")
+    else:
+      break
+
+  while True:
+    birthday = input('\n''Birth Date(Just year): ') 
+    if len(birthday)== 0 :
+      print("This part can not be empty!")
+    elif len(birthday) != 4 :
+      print('\n'"Please enter a reasonable date. ")
+    elif  int(birthday) < 1900 or int(birthday) > 2021:
+      print('\n'"Please enter a reasonable date. ")
+    elif 2020-int(birthday) == int(age) or 2020 - int(birthday) ==  int(age)-1 or 2020 - int(birthday) == int(age)+1 :
+      break
+    else:
+      print('Wrong date')
+
+  ad.append(firstname)
+  soyad.append(lastname)
+  yaş.append(age)
+  yıl.append(birthday)
+
+  print('\n''\n''First Name:  ' + ad[k])
+  print('Last Name:  ' + soyad[k])
+  print("Age: " + yaş[k])
+  print("Birthday: " + yıl[k])
+
+  '\n'
+  if int(age) > 18 :
+    print('\n''You can go out to the street.''\n')
+    
+  elif int(age) < 18 :
+    print('\n''You can not go out because it is too dangerous''\n''\n')
+
+  for i in range(k+1): 
+    a = '%s %s %s %s' % (ad[i],soyad[i],yaş[i],yıl[i])
+    print("User",i+1,":",a)
