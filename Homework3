@@ -1,0 +1,87 @@
+import random
+ 
+words = ["apple", "dog", "cat", "banana", "otobus", "phone", "book", "camera", "corona", "flare", "tourch"]
+rndm_word = random.choice(words)
+x = (len(rndm_word))
+z = list('_' * x)
+harfler =  []
+tahmin_hakki = ()
+
+print("WELCOME TO THE HANGMAN GAME"'\n')
+
+while True:
+  name = input('\n'"Please enter your name: ")
+  if len(name) == 0:
+    print("You have to enter a name.")
+  else:
+    break
+
+print('\n'"Welcome",name.capitalize())
+while True:
+  zorluk = input('\n'"Select the difficulty level (Easy / Hard): ")
+  if zorluk.lower() == 'easy':
+    tahmin_hakki = 10
+    break
+  elif zorluk.lower() == 'hard':
+    tahmin_hakki = 3
+    break
+  else:
+    print("Please enter a valid option.")
+print("You have {} wrong right(s).".format(tahmin_hakki))
+
+while tahmin_hakki>0: #guess
+  guess = input('\n'"Guess a character: ").lower()
+  if guess in harfler:
+    print("You have entered this letter before.")
+  
+  elif len(guess) >1 :
+    print("Please enter just a letter.")
+    continue
+  
+  elif len(guess) <1:
+    print("Please enter a letter.")
+    continue
+
+  elif guess not in rndm_word:
+    tahmin_hakki -= 1
+    print("Sorry, this letter is not in the word.",'\n'+'\n'"You have {} wrong right(s).".format(tahmin_hakki))
+    harfler.append(guess)
+
+  else:
+    for i in range(len(rndm_word)):
+      if guess == rndm_word[i]:
+        z[i] = guess
+        harfler.append(guess)
+    print("True guess!")    
+    print( '\n',' '.join(z), end='\n')
+
+  while True: #evet hayır sorusu
+    eorh=input('\n'"Would you like to guess (Y/N)? ").lower()
+    if eorh == 'y':
+      break
+    elif eorh == 'n':
+      break
+    else:
+      print("Please enter a valid option.")
+
+  while True: #doğrunun döndüğü yer
+    if eorh == "y":
+      e = input('\n'"Your guess: ").lower()
+      if tahmin_hakki == 0:
+        break
+      if e == rndm_word:
+        print('\n'"Congratulations! You won!")
+        tahmin_hakki = -1
+        break 
+      else:
+        tahmin_hakki -= 1
+        print("Ups.. You couldn't know.",'\n'+'\n' "You have {} wrong right(s)".format(tahmin_hakki))
+        break
+    elif eorh == 'n':
+     break
+    else:
+      print("Please enter a true selection.")
+
+  if tahmin_hakki == 0:
+    print("Sorry your guesswork ran out. ",'\n'+'\n'"Game is over..")
+    break
